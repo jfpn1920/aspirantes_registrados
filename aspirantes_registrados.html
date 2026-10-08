@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>aspirantes registrados</title>
+    <link rel="stylesheet" href="aspirantes_registrados.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <script src="aspirantes_registrados.js" defer></script>
+</head>
+<body>
+    <!------------------------------------------->
+    <!--|estructuracion_aspirantes_registrados|-->
+    <!------------------------------------------->
+    <main class="app">
+        <!-- Encabezado con el título y la explicación.
+        Esta página no lleva footer. -->
+        <header>
+            <h1>Aspirantes Registrados</h1>
+            <p class="subtitulo">Completa el formulario para registrar a un aspirante. Los datos se guardan en tu navegador.</p>
+        </header>
+        <!-- Formulario: novalidate desactiva los avisos del navegador para usar los nuestros -->
+        <form id="formulario" class="tarjeta" novalidate>
+            <!-- Campo 1: nombre completo.
+            Debe tener al menos 3 letras. -->
+            <div class="campo">
+                <label for="campo-nombre">Nombre completo</label>
+                <input id="campo-nombre" type="text" maxlength="40" autocomplete="off" placeholder="Ej: Ana Gómez">
+                <!-- JavaScript escribe aquí el mensaje si el nombre no es válido -->
+                <p id="error-nombre" class="error"></p>
+            </div>
+            <!-- Campo 2: edad (solo números).
+            min y max indican el rango permitido: de 16 a 80 años. -->
+            <div class="campo">
+                <label for="campo-edad">Edad</label>
+                <input id="campo-edad" type="number" min="16" max="80" placeholder="Ej: 22">
+                <p id="error-edad" class="error"></p>
+            </div>
+            <!-- Campo 3: correo electrónico.
+            JavaScript revisa que tenga formato válido y que no esté repetido. -->
+            <div class="campo">
+                <label for="campo-correo">Correo electrónico</label>
+                <input id="campo-correo" type="email" autocomplete="off" placeholder="Ej: ana@correo.com">
+                <p id="error-correo" class="error"></p>
+            </div>
+            <!-- Botón que envía el formulario (también funciona con Enter) -->
+            <button type="submit" class="boton">Registrar aspirante</button>
+            <!-- Mensaje de confirmación después de registrar -->
+            <p id="exito" class="exito"></p>
+        </form>
+        <!-- Lista de aspirantes registrados.
+        Aquí se ven los datos que se guardaron en localStorage. -->
+        <section class="tarjeta">
+            <h2>Lista de aspirantes</h2>
+            <!-- Resumen con la cantidad y la edad promedio -->
+            <p id="resumen" class="resumen"></p>
+            <!-- Buscador: filtra por nombre o correo (también se guarda) -->
+            <label for="campo-buscar" class="etiqueta-buscar">Buscar</label>
+            <input id="campo-buscar" type="search" placeholder="Escribe un nombre o correo" autocomplete="off">
+            <!-- Contenedor con desplazamiento lateral para que la tabla quepa en el celular -->
+            <div class="tabla-caja">
+                <table>
+                    <!-- Encabezados de las columnas -->
+                    <thead>
+                        <tr><th>#</th><th>Nombre</th><th>Edad</th><th>Correo</th><th>Registro</th><th></th></tr>
+                    </thead>
+                    <!-- JavaScript crea una fila por cada aspirante.
+                    Cada fila tiene un botón para eliminarla. -->
+                    <tbody id="cuerpo"></tbody>
+                </table>
+            </div>
+            <!-- Mensaje cuando no hay filas para mostrar -->
+            <p id="vacio" class="vacio"></p>
+            <!-- Borra a todos los aspirantes (pide confirmación) -->
+            <button id="btn-borrar" class="boton-texto">Borrar todos los aspirantes</button>
+        </section>
+    </main>
+    <!-- Aviso por si el navegador tiene JavaScript desactivado -->
+    <noscript>Activa JavaScript para usar el formulario.</noscript>
+</body>
+</html>

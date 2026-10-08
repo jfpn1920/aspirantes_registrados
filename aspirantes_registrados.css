@@ -1,0 +1,84 @@
+/* ===== VARIABLES: colores reutilizables ===== */
+:root {
+    --fondo: #fde6e3;       /* rosa suave de la página */
+    --tinta: #4a1530;       /* burdeos oscuro para textos y botones */
+    --tarjeta: #ffffff;     /* fondo de las tarjetas */
+    --linea: #ecc9c4;       /* bordes suaves */
+    --cebra: #fff4f2;       /* fondo de las filas pares de la tabla */
+    --error: #b3261e;       /* rojo para errores */
+    --exito: #1b7a4b;       /* verde para confirmaciones */
+}
+/* Quita márgenes por defecto y simplifica el cálculo de tamaños */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+/* Fondo de la página y tipografía general */
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 28px 14px;
+    font-family: 'Plus Jakarta Sans', Arial, sans-serif;
+    color: var(--tinta);
+    background: var(--fondo);
+}
+/* Contenedor principal y títulos */
+.app { width: 100%; max-width: 720px; }
+h1 { font-size: 2.2rem; font-weight: 800; line-height: 1.1; }
+h2 { margin-bottom: 6px; font-size: 1.3rem; }
+.subtitulo { margin: 8px 0 22px; line-height: 1.5; }
+/* Tarjetas blancas con borde izquierdo de color */
+.tarjeta {
+    margin-bottom: 20px;
+    padding: 22px;
+    background: var(--tarjeta);
+    border-left: 6px solid var(--tinta);
+    border-radius: 12px;
+}
+/* Campos del formulario */
+.campo { margin-bottom: 14px; }
+label { display: block; margin-bottom: 6px; font-weight: 600; }
+input {
+    width: 100%;
+    padding: 12px;
+    font: inherit;
+    color: var(--tinta);
+    background: #fff;
+    border: 2px solid var(--tinta);
+    border-radius: 8px;
+}
+input.invalido { border-color: var(--error); }
+.error { min-height: 1.2em; margin-top: 4px; font-size: 0.85rem; font-weight: 600; color: var(--error); }
+.exito { margin-top: 12px; font-weight: 600; color: var(--exito); }
+/* Botones */
+.boton {
+    padding: 12px 26px;
+    font: inherit;
+    font-weight: 800;
+    color: #fff;
+    background: var(--tinta);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.boton:hover { opacity: 0.88; }
+.boton-texto { margin-top: 14px; padding: 6px 0; font: inherit; color: var(--tinta); background: none; border: none; text-decoration: underline; cursor: pointer; }
+/* Foco visible para quien navega con el teclado */
+button:focus-visible, input:focus-visible { outline: 3px solid #e0527a; outline-offset: 2px; }
+/* Resumen y buscador */
+.resumen { margin-bottom: 14px; font-size: 0.95rem; }
+.etiqueta-buscar { font-size: 0.9rem; }
+/* Tabla: la caja permite desplazarla de lado en pantallas pequeñas */
+.tabla-caja { margin-top: 14px; overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+th, td { padding: 10px 8px; text-align: left; white-space: nowrap; border-bottom: 1px solid var(--linea); }
+th { font-size: 0.8rem; background: var(--cebra); }
+tbody tr:nth-child(even) { background: var(--cebra); }
+/* Botón de eliminar dentro de cada fila */
+.eliminar { padding: 5px 10px; font: inherit; font-size: 0.8rem; color: var(--error); background: none; border: 1px solid var(--error); border-radius: 6px; cursor: pointer; }
+/* Clase que oculta cualquier elemento (JS la agrega y la quita) */
+.oculto { display: none !important; }
+/* Mensaje de tabla vacía */
+.vacio { padding: 18px 8px; text-align: center; opacity: 0.75; }
+/* En pantallas pequeñas se reduce el título y el espacio de las tarjetas */
+@media (max-width: 480px) { h1 { font-size: 1.7rem; } .tarjeta { padding: 16px; } }
+/* Respeta a quienes prefieren menos movimiento en pantalla */
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
